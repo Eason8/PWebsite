@@ -1,0 +1,29 @@
+---
+// src/pages/blog/index.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogFilter from '../../components/BlogFilter';
+import { getCollection } from 'astro:content';
+
+// 获取并按日期排序博客
+const allPosts = await getCollection('blog');
+allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout pageTitle="Blog">
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    
+    <!-- 头部 -->
+    <div class="mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        博客文章
+      </h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400 mb-2">分享技术、生活与思考</p>
+      <div class="text-sm text-gray-500">
+        共 {allPosts.length} 篇文章
+      </div>
+    </div>
+
+    <!-- Interactive Filter Component -->
+    <BlogFilter posts={allPosts} client:load />
+  </div>
+</BaseLayout>

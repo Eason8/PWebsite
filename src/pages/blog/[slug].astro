@@ -1,0 +1,331 @@
+---
+// src/pages/blog/[slug].astro
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// 必须导出 getStaticPaths 生成所有路由
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// Get related posts (same category)
+const allPosts = await getCollection('blog');
+const relatedPosts = allPosts
+  .filter(post => post.slug !== entry.slug && post.data.category === entry.data.category)
+  .slice(0, 3);
+---
+
+<BaseLayout pageTitle={entry.data.title}>
+  <article class="max-w-4xl mx-auto px-6 py-8">
+    
+    <!-- Header -->
+    <header class="mb-10 pb-8 border-b border-gray-200 dark:border-gray-700">
+      <div class="mb-4">
+        <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-medium rounded">
+          {entry.data.category}
+        </span>
+      </div>
+      
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
+        {entry.data.title}
+      </h1>
+      
+      <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">
+        {entry.data.description}
+      </p>
+      
+      <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+        <span>{entry.data.author}</span>
+        <span>·</span>
+        <span>{entry.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+      </div>
+      
+      <div class="mt-4 flex flex-wrap gap-2">
+        {entry.data.tags.map(tag => (
+          <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-xs rounded">
+            #{tag}
+          </span>
+        ))}
+      </div>
+    </header>
+    
+    <!-- Article Content -->
+    <div class="blog-content">
+      <Content />
+    </div>
+    
+    <style is:global>
+      /* 标题样式 */
+      .blog-content h1 {
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+      }
+      
+      .blog-content h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 0.75rem;
+        margin-top: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      
+      .blog-content h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 0.5rem;
+        margin-top: 1rem;
+      }
+      
+      .blog-content h4 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 0.5rem;
+        margin-top: 0.75rem;
+      }
+      
+      /* Dark mode headings */
+      :global(.dark) .blog-content h1,
+      :global(.dark) .blog-content h2,
+      :global(.dark) .blog-content h3,
+      :global(.dark) .blog-content h4 {
+        color: #ffffff;
+      }
+      
+      :global(.dark) .blog-content h2 {
+        border-bottom-color: #374151;
+      }
+      
+      /* 段落 */
+      .blog-content p {
+        color: #374151;
+        line-height: 1.75;
+        margin-bottom: 1rem;
+      }
+      
+      :global(.dark) .blog-content p {
+        color: #d1d5db;
+      }
+      
+      /* 链接 */
+      .blog-content a {
+        color: #2563eb;
+        text-decoration: none;
+      }
+      
+      .blog-content a:hover {
+        text-decoration: underline;
+      }
+      
+      :global(.dark) .blog-content a {
+        color: #60a5fa;
+      }
+      
+      /* 加粗 */
+      .blog-content strong {
+        color: #111827;
+        font-weight: 600;
+      }
+      
+      :global(.dark) .blog-content strong {
+        color: #ffffff;
+      }
+      
+      /* 行内代码 */
+      .blog-content p code,
+      .blog-content li code {
+        color: #2563eb;
+        background-color: #f3f4f6;
+        padding: 0.125rem 0.375rem;
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+        font-family: monospace;
+      }
+      
+      :global(.dark) .blog-content p code,
+      :global(.dark) .blog-content li code {
+        color: #60a5fa;
+        background-color: #1f2937;
+      }
+      
+      /* 代码块 */
+      .blog-content pre {
+        background-color: #111827;
+        color: #f3f4f6;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        border: 1px solid #374151;
+        margin: 1rem 0;
+      }
+      
+      :global(.dark) .blog-content pre {
+        background-color: #000000;
+      }
+      
+      .blog-content pre code {
+        background-color: transparent;
+        color: #f3f4f6;
+        padding: 0;
+      }
+      
+      /* 无序列表 */
+      .blog-content ul {
+        margin: 1rem 0;
+        list-style-type: disc;
+        padding-left: 1.5rem;
+      }
+      
+      .blog-content ul li {
+        margin: 0.25rem 0;
+      }
+      
+      /* 有序列表 */
+      .blog-content ol {
+        margin: 1rem 0;
+        list-style-type: decimal;
+        padding-left: 1.5rem;
+      }
+      
+      .blog-content ol li {
+        margin: 0.25rem 0;
+      }
+      
+      .blog-content li {
+        color: #374151;
+      }
+      
+      :global(.dark) .blog-content li {
+        color: #d1d5db;
+      }
+      
+      /* 嵌套列表 */
+      .blog-content li > ul,
+      .blog-content li > ol {
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+      }
+      
+      /* 引用块 */
+      .blog-content blockquote {
+        border-left: 4px solid #3b82f6;
+        padding-left: 1rem;
+        font-style: italic;
+        color: #374151;
+        background-color: #eff6ff;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        margin: 1rem 0;
+      }
+      
+      :global(.dark) .blog-content blockquote {
+        color: #d1d5db;
+        background-color: #1f2937;
+      }
+      
+      /* 图片 */
+      .blog-content img {
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        margin: 1.5rem 0;
+      }
+      
+      /* 分隔线 */
+      .blog-content hr {
+        border-color: #e5e7eb;
+        margin: 2rem 0;
+      }
+      
+      :global(.dark) .blog-content hr {
+        border-color: #374151;
+      }
+      
+      /* 表格 */
+      .blog-content table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 1.5rem 0;
+      }
+      
+      .blog-content th {
+        border: 1px solid #d1d5db;
+        background-color: #f3f4f6;
+        padding: 0.5rem;
+        text-align: left;
+        font-weight: 600;
+      }
+      
+      .blog-content td {
+        border: 1px solid #d1d5db;
+        padding: 0.5rem;
+      }
+      
+      :global(.dark) .blog-content th {
+        border-color: #4b5563;
+        background-color: #1f2937;
+      }
+      
+      :global(.dark) .blog-content td {
+        border-color: #4b5563;
+      }
+      
+      /* 数学公式 */
+      .blog-content .katex {
+        color: #111827;
+      }
+      
+      :global(.dark) .blog-content .katex {
+        color: #ffffff;
+      }
+      
+      .blog-content .katex-display {
+        margin: 1rem 0;
+        overflow-x: auto;
+      }
+    </style>
+
+    <!-- Back to Blog Button -->
+    <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+      <a href="/blog" class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition group">
+        <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        返回博客列表
+      </a>
+    </div>
+
+    <!-- Related Posts -->
+    {relatedPosts.length > 0 && (
+      <div class="mt-12 pt-12 border-t border-gray-200 dark:border-gray-700">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">相关文章</h2>
+        <div class="grid md:grid-cols-3 gap-4">
+          {relatedPosts.map(post => (
+            <a href={`/blog/${post.slug}`} class="group block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 hover:shadow-md transition-all">
+              <h3 class="font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 transition line-clamp-2">
+                {post.data.title}
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 mb-2">
+                {post.data.description}
+              </p>
+              <span class="text-xs text-blue-600 font-medium">
+                阅读更多 →
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  </article>
+</BaseLayout>

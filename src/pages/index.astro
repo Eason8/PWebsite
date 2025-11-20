@@ -1,0 +1,103 @@
+---
+// src/pages/index.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout pageTitle="Resume">
+  <div class="max-w-4xl mx-auto px-6 py-8">
+    
+    <!-- 头部信息 -->
+    <header class="mb-10">
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-2">张三</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-300 mb-4">全栈开发工程师</p>
+      
+      <div class="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
+        <a href="mailto:email@example.com" class="hover:text-blue-600 transition">
+          📧 email@example.com
+        </a>
+        <a href="https://github.com/yourname" class="hover:text-blue-600 transition">
+          🔗 github.com/yourname
+        </a>
+        <span>📍 Shanghai, China</span>
+      </div>
+    </header>
+
+    <!-- 技能栈 -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 pb-2 border-b-2 border-blue-600">技能栈</h2>
+      <div class="flex flex-wrap gap-2">
+        {['JavaScript', 'TypeScript', 'React', 'Vue', 'Node.js', 'Python', 'Docker', 'AWS', 'PostgreSQL', 'MongoDB'].map(skill => (
+          <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded text-sm">
+            {skill}
+          </span>
+        ))}
+      </div>
+    </section>
+
+    <!-- 工作经历 -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 pb-2 border-b-2 border-blue-600">工作经历</h2>
+      
+      <div class="space-y-6">
+        <div>
+          <div class="flex justify-between items-baseline mb-2">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">高级前端工程师</h3>
+            <span class="text-sm text-gray-500">2021 - 至今</span>
+          </div>
+          <div class="text-blue-600 dark:text-blue-400 mb-2">某知名互联网公司</div>
+          <ul class="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300">
+            <li>负责核心 SaaS 平台架构重构，性能提升 40%</li>
+            <li>主导内部组件库设计，覆盖 10+ 业务线</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="flex justify-between items-baseline mb-2">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">前端开发工程师</h3>
+            <span class="text-sm text-gray-500">2019 - 2021</span>
+          </div>
+          <div class="text-blue-600 dark:text-blue-400 mb-2">初创科技公司</div>
+          <ul class="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300">
+            <li>独立负责公司官网及后台管理系统开发</li>
+            <li>参与产品需求分析和技术方案设计</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 教育背景 -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 pb-2 border-b-2 border-blue-600">教育背景</h2>
+      <div>
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">计算机科学与技术 · 本科</h3>
+        <p class="text-blue-600 dark:text-blue-400">某某大学</p>
+        <p class="text-sm text-gray-500">2015 - 2019</p>
+      </div>
+    </section>
+
+    <!-- 开源项目 -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 pb-2 border-b-2 border-blue-600">开源项目</h2>
+      <div class="space-y-4">
+        <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-blue-500 transition">
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Project Alpha</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-2">一个基于 Rust 的高性能图片处理工具</p>
+          <div class="flex gap-2">
+            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded">Rust</span>
+            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded">CLI</span>
+          </div>
+        </div>
+        
+        <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:border-blue-500 transition">
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">UI Component Library</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-2">现代化的 React 组件库，支持主题定制</p>
+          <div class="flex gap-2">
+            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded">React</span>
+            <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded">TypeScript</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
