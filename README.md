@@ -2,6 +2,10 @@
 
 一个现代化的个人主页和博客网站，使用 Astro + React + Tailwind CSS 构建。
 
+## Demo
+
+![个人主页](https://silion-ai.vercel.app/)
+
 ## ✨ 特性
 
 - **📄 个人简历页面** - 居中展示的精美 CV，包含工作经历、技能栈、教育背景和开源项目
