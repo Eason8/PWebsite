@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content, headings } = await entry.render();
 
 // Get related posts (same category)
 const allPosts = await getCollection('blog');
@@ -22,45 +22,118 @@ const relatedPosts = allPosts
 ---
 
 <BaseLayout pageTitle={entry.data.title}>
-  <article class="max-w-4xl mx-auto px-6 py-8">
+  <!-- Back to Blog Button (Fixed at top left area) -->
+  <div class="max-w-7xl mx-auto px-6 pt-6">
+    <a href="/blog" class="inline-flex items-center gap-2 text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors group">
+      <div class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition-colors">
+        <svg class="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+      </div>
+      <span class="text-sm font-medium">返回博客</span>
+    </a>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col lg:flex-row gap-12">
     
-    <!-- Header -->
-    <header class="mb-10 pb-8 border-b border-gray-200 dark:border-gray-700">
-      <div class="mb-4">
-        <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-medium rounded">
-          {entry.data.category}
-        </span>
-      </div>
+    <!-- Main Content -->
+    <article class="lg:w-3/4 min-w-0">
       
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
-        {entry.data.title}
-      </h1>
-      
-      <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">
-        {entry.data.description}
-      </p>
-      
-      <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500">
-        <span>{entry.data.author}</span>
-        <span>·</span>
-        <span>{entry.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-      </div>
-      
-      <div class="mt-4 flex flex-wrap gap-2">
-        {entry.data.tags.map(tag => (
-          <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-xs rounded">
-            #{tag}
+      <!-- Header -->
+      <header class="mb-10 pb-8 border-b border-gray-200 dark:border-gray-700">
+        <div class="mb-4">
+          <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-medium rounded">
+            {entry.data.category}
           </span>
-        ))}
+        </div>
+        
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
+          {entry.data.title}
+        </h1>
+        
+        <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">
+          {entry.data.description}
+        </p>
+        
+        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+          <span>{entry.data.author}</span>
+          <span>·</span>
+          <span>{entry.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        </div>
+        
+        <div class="mt-4 flex flex-wrap gap-2">
+          {entry.data.tags.map(tag => (
+            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-xs rounded">
+              #{tag}
+            </span>
+          ))}
+        </div>
+      </header>
+      
+      <!-- Article Content -->
+      <div class="blog-content">
+        <Content />
       </div>
-    </header>
+
+      <!-- Back to Blog Button (Bottom) -->
+      <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <a href="/blog" class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition group">
+          <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+          </svg>
+          返回博客列表
+        </a>
+      </div>
+
+      <!-- Related Posts -->
+      {relatedPosts.length > 0 && (
+        <div class="mt-12 pt-12 border-t border-gray-200 dark:border-gray-700">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">相关文章</h2>
+          <div class="grid md:grid-cols-3 gap-4">
+            {relatedPosts.map(post => (
+              <a href={`/blog/${post.slug}`} class="group block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 hover:shadow-md transition-all">
+                <h3 class="font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 transition line-clamp-2">
+                  {post.data.title}
+                </h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 mb-2">
+                  {post.data.description}
+                </p>
+                <span class="text-xs text-blue-600 font-medium">
+                  阅读更多 →
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </article>
+
+    <!-- Table of Contents Sidebar -->
+    <aside class="hidden lg:block lg:w-1/4 relative">
+      <div class="sticky top-24 p-6 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800/50">
+        <h2 class="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
+          目录
+        </h2>
+        <nav>
+          <ul class="space-y-2 text-sm">
+            {headings.map((heading) => (
+              <li style={{ paddingLeft: `${(heading.depth - 1) * 0.75}rem` }}>
+                <a 
+                  href={`#${heading.slug}`}
+                  class="block text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors line-clamp-1"
+                >
+                  {heading.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </aside>
+
+  </div>
     
-    <!-- Article Content -->
-    <div class="blog-content">
-      <Content />
-    </div>
-    
-    <style is:global>
+  <style is:global>
       /* 标题样式 */
       .blog-content h1 {
         font-size: 1.875rem;
