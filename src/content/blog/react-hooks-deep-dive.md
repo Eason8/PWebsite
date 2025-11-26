@@ -4,8 +4,8 @@ pubDate: 2024-10-28
 description: "从原理到实践，全面理解 React Hooks 的工作机制和最佳实践。"
 author: "San Zhang"
 image: "/images/cover1.jpg"
-tags: ["Tech", "Astro", "Life"]
-category: "Domain Surveys"
+tags: ["Technology", "AI"]
+category: "Interpretability"
 ---
 
 # React Hooks 深度解析

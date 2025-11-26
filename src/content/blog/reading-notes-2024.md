@@ -3,7 +3,7 @@ title: "2024 年度阅读笔记"
 pubDate: 2024-11-05
 description: "分享今年读过的好书和从中获得的启发，涵盖技术、哲学和个人成长。"
 author: "San Zhang"
-tags: ["Reading", "Books", "Growth"]
+tags: ["Reading", "Books"]
 category: "Life"
 ---
 

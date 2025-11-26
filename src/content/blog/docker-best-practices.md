@@ -3,7 +3,7 @@ title: "Docker 最佳实践与技巧"
 pubDate: 2024-10-15
 description: "从 Dockerfile 优化到容器编排，全面掌握 Docker 的最佳实践。"
 author: "San Zhang"
-tags: ["Inference", "Pre-training", "Post-training"]
+tags: ["Inference Acceleration", "Pre-training", "Post-training", "Transformer"]
 category: "LLM Engineering"
 ---
 

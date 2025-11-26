@@ -3,7 +3,7 @@ title: "Markdown 渲染测试"
 pubDate: 2024-11-20
 description: "测试所有 Markdown 功能，包括标题、列表、代码块和数学公式。"
 author: "Wencheng Su"
-tags: ["Video", "AIGC", "RecSys", "Search"]
+tags: ["VideoGen", "AIGC", "RecSys", "Search", "Tutorial"]
 category: "Domain Surveys"
 ---
 
