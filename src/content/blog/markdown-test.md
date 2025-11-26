@@ -4,7 +4,7 @@ pubDate: 2024-11-20
 description: "测试所有 Markdown 功能，包括标题、列表、代码块和数学公式。"
 author: "Wencheng Su"
 tags: ["Video", "AIGC", "RecSys", "Search"]
-category: "领域入门"
+category: "Domain Surveys"
 ---
 
 # 一级标题测试
