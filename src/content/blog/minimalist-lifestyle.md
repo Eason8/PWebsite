@@ -3,8 +3,8 @@ title: "极简主义生活方式的思考"
 pubDate: 2024-11-01
 description: "在信息爆炸的时代，如何通过极简主义找到内心的平静与专注。"
 author: "San Zhang"
-tags: ["Lifestyle", "Minimalism", "Productivity"]
-category: "Life"
+tags: ["Paper Deep Dive", "ICLR", "NeurIPS"]
+category: "Paper Notes"
 ---
 
 # 极简主义生活方式的思考

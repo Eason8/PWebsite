@@ -3,7 +3,7 @@ title: "Web 性能优化实战指南"
 pubDate: 2024-11-15
 description: "深入探讨前端性能优化的各种技巧和最佳实践，从资源加载到渲染优化。"
 author: "San Zhang"
-tags: ["Performance", "Frontend", "Optimization"]
+tags: ["Performance", "Optimization"]
 category: "Programming"
 ---
 

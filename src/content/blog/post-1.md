@@ -5,7 +5,7 @@ description: "这是我的个人网站搭建记录，使用了 Astro 和 Tailwin
 author: "San Zhang"
 image: "/images/cover1.jpg"
 tags: ["Tech", "Astro", "Life"]
-category: "Programming"
+category: "Domain Surveys"
 ---
 
 # Hello World
