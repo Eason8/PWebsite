@@ -3,7 +3,7 @@ title: "AI 时代的思考与展望"
 pubDate: 2024-11-10
 description: "探讨人工智能对社会、工作和生活的深远影响，以及我们应该如何应对。"
 author: "San Zhang"
-tags: ["AI", "Technology", "Statistics", "ML Basics", "CodeAnalysis", ""]
+tags: ["AI", "Technology", "Statistics", "ML Basics", "CodeAnalysis"]
 category: "AI Foundations"
 ---
 

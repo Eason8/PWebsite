@@ -17,18 +17,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <!-- 个人基本信息 -->
         <div class="text-center md:text-left w-full">
-          <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">苏文成</h1>
-          <p class="text-lg text-gray-600 dark:text-gray-300 mb-1">全栈开发工程师</p>
-          <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">某知名互联网公司</p>
+          <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Wencheng Su</h1>
+          <p class="text-lg text-gray-600 dark:text-gray-300 mb-1">在读研究生</p>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">浙江大学</p>
 
           <!-- 技能/研究兴趣 -->
           <div class="mb-6">
             <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Focus & Interests</h3>
             <div class="flex flex-wrap md:flex-col gap-2">
-              <span class="text-sm text-gray-700 dark:text-gray-300">Full Stack Development</span>
-              <span class="text-sm text-gray-700 dark:text-gray-300">System Architecture</span>
-              <span class="text-sm text-gray-700 dark:text-gray-300">Cloud Native & DevOps</span>
-              <span class="text-sm text-gray-700 dark:text-gray-300">Web Performance</span>
+              <span class="text-sm text-gray-700 dark:text-gray-300">LLM Hallucinationy</span>
+              <span class="text-sm text-gray-700 dark:text-gray-300">Interpretabilit</span>
+              <span class="text-sm text-gray-700 dark:text-gray-300">Inference Acceleration</span>
+              <span class="text-sm text-gray-700 dark:text-gray-300">Multimodal generation</span>
             </div>
           </div>
 
@@ -36,13 +36,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="space-y-2 text-sm">
             <div class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
               <span class="w-5 text-center">📍</span>
-              <span>Shanghai, China</span>
+              <span>Hang zhou, China</span>
             </div>
             <a href="mailto:email@example.com" class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">
               <span class="w-5 text-center">📧</span>
-              <span>email@example.com</span>
+              <span>suwencheng@zju.edu.cn</span>
             </a>
-            <a href="https://github.com/yourname" target="_blank" class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">
+            <a href="https://github.com/Eason8" target="_blank" class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition">
               <span class="w-5 text-center">🔗</span>
               <span>Github</span>
             </a>
@@ -62,31 +62,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">About Me</h2>
           <div class="text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
             <p>
-              你好，我是张三。我是一名充满热情的全栈开发工程师，专注于构建优雅、高效的 Web 应用。我相信技术的力量可以改变世界，也享受在代码中创造美好体验的过程。
+              你好，我是苏文成。目前是浙江大学的一名研二学生，我所在的实验室是浙江大学区块链与数据安全全国重点实验室，我的导师是巴钟杰老师。
             </p>
             <p>
-              在过去的几年里，我参与了多个大型项目的开发，从前端到后端，从架构设计到性能优化，积累了丰富的实战经验。同时，我也热衷于开源社区，贡献自己的代码，与全球开发者交流学习。
+              目前我的研究聚焦于大模型幻觉的可解释性研究，同时我也对大模型推理加速以及多模态生成很感兴趣，我会在这里分享自己关于技术的一些想法和自己感兴趣但是尚未涉及的领域的介绍，除此之外，也会分享自己读到的一些有意思的paper和book。
             </p>
           </div>
         </section>
-
-        <!-- News (模拟) -->
+        
         <section class="mb-10">
           <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <span class="text-2xl">🔥</span> News
           </h2>
           <ul class="space-y-3 text-gray-700 dark:text-gray-300">
-            <li class="flex gap-3">
-              <span class="font-mono text-sm text-gray-500 min-w-[80px]">2024.05</span>
+            <li class="flex gap-3 items-baseline">
+              <span class="font-mono text-sm text-gray-500 shrink-0 leading-6 min-w-[120px]">2024.05</span>
               <span>主导设计的内部组件库发布 v2.0 版本，覆盖 10+ 业务线。</span>
             </li>
-            <li class="flex gap-3">
-              <span class="font-mono text-sm text-gray-500 min-w-[80px]">2023.12</span>
+            <li class="flex gap-3 items-baseline">
+              <span class="font-mono text-sm text-gray-500 shrink-0 leading-6 min-w-[120px]">2023.12</span>
               <span>核心 SaaS 平台重构完成，性能提升 40%，获得年度技术突破奖。</span>
             </li>
-            <li class="flex gap-3">
-              <span class="font-mono text-sm text-gray-500 min-w-[80px]">2021.07</span>
-              <span>加入某知名互联网公司，担任高级前端工程师。</span>
+            <li class="flex gap-3 items-baseline">
+              <span class="font-mono text-sm text-gray-500 shrink-0 leading-6 min-w-[120px]">2024.06-2024.09</span>
+              <div class="flex-1">
+                <div>得物实习，担任大模型应用开发工程师，负责公司oncall机器人业务实现与相关策略优化。</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1 leading-relaxed">
+                  该产品广泛用于解决公司内部与外部商家的业务问题，也被用来解决公司内部跨部门、跨团队多人协作的长链路问题，通过意图识别、查询改写、多路搜索召回以及知识库相似qa生成等策略，将机器人工单拦截率由35%提升到52%，用户满意反馈率由10.7%提升到31%，机器人答案回复率由63.8%提升至81%。
+                </div>
+              </div>
             </li>
           </ul>
         </section>
@@ -147,23 +151,38 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
         </section>
 
-        <!-- Honors and Awards (或者 Education) -->
         <section class="mb-10">
           <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <span class="text-2xl">🏆</span> Education & Awards
           </h2>
-          <ul class="space-y-2 text-gray-700 dark:text-gray-300">
-            <li class="flex gap-2 items-start">
-              <span class="text-gray-400 mt-1.5 w-1.5 h-1.5 bg-gray-400 rounded-full shrink-0"></span>
-              <span>
-                <strong>2019</strong>, 优秀毕业生, 某某大学
-              </span>
+          <ul class="space-y-4 text-gray-700 dark:text-gray-300">
+            <li class="flex gap-4 items-baseline">
+              <span class="font-mono text-sm text-gray-500 dark:text-gray-400 shrink-0 w-22">2025.10</span>
+              <div class="flex-1">
+                <span class="font-semibold text-gray-900 dark:text-white">浙江大学一等学业优秀奖助金</span>
+                <span class="text-gray-500 dark:text-gray-400 text-sm ml-1">- 浙江大学研究生单项荣誉</span>
+              </div>
             </li>
-            <li class="flex gap-2 items-start">
-              <span class="text-gray-400 mt-1.5 w-1.5 h-1.5 bg-gray-400 rounded-full shrink-0"></span>
-              <span>
-                <strong>2015 - 2019</strong>, 计算机科学与技术学士, 某某大学
-              </span>
+            <li class="flex gap-4 items-baseline">
+              <span class="font-mono text-sm text-gray-500 dark:text-gray-400 shrink-0 w-22">2024.11</span>
+              <div class="flex-1">
+                <span class="font-semibold text-gray-900 dark:text-white">特等奖</span>
+                <span class="text-gray-600 dark:text-gray-300">，第十九届“挑战杯”全国大学生课外学术科技作品竞赛“揭榜挂帅”专项赛</span>
+              </div>
+            </li>
+            <li class="flex gap-4 items-baseline">
+              <span class="font-mono text-sm text-gray-500 dark:text-gray-400 shrink-0 w-22">2024.06</span>
+              <div class="flex-1">
+                <span class="font-semibold text-gray-900 dark:text-white">优秀毕业生</span>
+                <span class="text-gray-500 dark:text-gray-400 text-sm ml-1">，中国矿业大学</span>
+              </div>
+            </li>
+            <li class="flex gap-4 items-baseline">
+              <span class="font-mono text-sm text-gray-500 dark:text-gray-400 shrink-0 w-22">2020 - 2024</span>
+              <div class="flex-1">
+                <span class="font-semibold text-gray-900 dark:text-white">计算机科学与技术学院</span>
+                <span class="text-gray-500 dark:text-gray-400 text-sm ml-1">，中国矿业大学</span>
+              </div>
             </li>
           </ul>
         </section>
