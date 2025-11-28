@@ -1,7 +1,7 @@
 ---
 // src/layouts/BaseLayout.astro
 import '../styles/global.css';
-
+import logoSrc from '../assets/1.svg'; 
 const { title, pageTitle } = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
@@ -21,7 +21,7 @@ const currentPath = Astro.url.pathname;
         <!-- Logo -->
         <a href="/" class="group flex items-center gap-2">
           <div class="w-10 h-10 rounded-lg overflow-hidden bg-white flex items-center justify-center group-hover:bg-gray-50 transition">
-            <img src="/src/assets/1.svg" alt="Logo" class="h-7 w-auto object-contain" />
+            <img src={logoSrc.src} alt="Logo" class="h-7 w-auto object-contain" />
           </div>
           <span class="font-bold text-xl tracking-tight hidden sm:block">Wencheng Su</span>
         </a>
