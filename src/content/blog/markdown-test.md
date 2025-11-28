@@ -63,6 +63,11 @@ def hello_world():
 hello_world()
 ```
 
+图像：
+
+![](../images/thumb.png)
+
+
 ## 数学公式测试
 
 ### 行内公式
